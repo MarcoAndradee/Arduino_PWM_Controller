@@ -28,44 +28,6 @@ PWM é a sigla para "Pulse Width Modulation", ou Modulação por Largura de Puls
 <img height="500em" src="./assets/img/esquematico.png">
 </div>
 
-# Código-Fonte
-
-#include <Arduino.h>
-
-int botao = 2;
-int motor = 9;
-int estado = 0;
-int velocidade = 0;
-unsigned long tempo_ref = 0;
-unsigned long tempo_espera = 50;
-
-void setup()
-{
-  pinMode(botao, INPUT_PULLUP);
-  pinMode(motor, OUTPUT);
-}
-void loop()
-{
-  int aperto = digitalRead(botao);
-  if (aperto != estado)
-  {
-    estado = aperto;
-    if (aperto == HIGH)
-    {
-      tempo_ref = millis();
-    }
-    if (aperto == HIGH && ((millis() - tempo_ref) - tempo_espera))
-    {
-      velocidade += 63;
-    }
-    if (velocidade > 255)
-    {
-      velocidade = 0;
-    }
-    analogWrite(motor, velocidade);
-  }
-}
-
 # Instruções de montagem
 
 
@@ -75,5 +37,5 @@ O projeto tem como objetivo utilizar o circuito com os componentes citados para 
 
 <div align=center>
 <a href="https://github.com/MarcoAndradee">
-<img height="200em" src="./assets/img/unimater.png">
+<img height="50em" src="./assets/img/unimater.png">
 </div>
